@@ -1,0 +1,11 @@
+Dac limit czasu n/10 dla każdego rozmiaru problemu w sekundach 
+
+W raze czaego brute forsować i przerwać problem w momencie czasu 
+
+Weryfikator musi sprawdzać, czy wszystkie zadania są 
+
+Numerować od 1 
+
+Na windowsa
+
+ 
