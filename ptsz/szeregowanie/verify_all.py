@@ -11,9 +11,10 @@ def run_verification_for_all_files(executable):
     
     with open('end.csv', 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=';')
+        csv_writer.writerow([number])
         
         for i in range(50, 501, 50):
-            input_file = f'in_{number}_{i}.txt'
+            input_file = f'in_151892_{i}.txt'
             output_file = f'out_{number}_{i}.txt'
             exec_output_file = f'out_{exec_name}_{i}.txt'
             
