@@ -42,18 +42,14 @@ def evaluate_permutation(sequence, p, r, S):
 
     return total_flow_time
 
-def find_first_ready_task(n, p, r, S, time_limit):
+def find_solution(n, p, r, S, time_limit):
     current_time = 0
-    total_flow_time = 0
     previous_task = 0
     sequence = []
     remaining_tasks = set(range(1, n + 1))
 
     start_time = time.time()
     time_limit -= 1
-
-    ready_tasks = [(r[i], i + 1) for i in range(n)]
-    heapq.heapify(ready_tasks)
 
     while remaining_tasks:
         best_task = None
@@ -97,5 +93,5 @@ if __name__ == "__main__":
     time_limit = int(sys.argv[3])
     print(input_file)
     n, p, r, S = read_input(input_file)
-    best_F, best_order = find_first_ready_task(n, p, r, S, time_limit)
+    best_F, best_order = find_solution(n, p, r, S, time_limit)
     write_output(output_file, best_F, best_order)
