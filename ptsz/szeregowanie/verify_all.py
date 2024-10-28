@@ -12,7 +12,7 @@ def run_verification_for_all_files(executable):
     with open('end.csv', 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=';')
         csv_writer.writerow([number])
-        
+
         for i in range(50, 501, 50):
             input_file = f'in_151892_{i}.txt'
             output_file = f'out_{number}_{i}.txt'
@@ -38,7 +38,6 @@ def run_verification_for_all_files(executable):
                         value = "Error"
                     else:
                         print(f"Verification completed for {input_file}.")
-                        print(f"Output: {result.stdout}")
                         exec_command = ['python', 'weryfikator.py', input_file, output_file]
                         exec_result = subprocess.run(
                             exec_command,
