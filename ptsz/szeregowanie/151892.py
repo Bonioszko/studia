@@ -28,9 +28,8 @@ def evaluate_permutation(sequence, p, r, S):
     for task in sequence:
         task_index = task - 1
 
-        if previous_task != 0:
-            current_time += S[previous_task - 1][task_index]
-
+        
+        current_time += S[previous_task - 1][task_index] if previous_task != 0 else 0
         start_time = max(current_time, r[task_index])
 
         completion_time = start_time + p[task_index]
