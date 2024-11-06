@@ -1,0 +1,10 @@
+SKRYPT
+
+
+odpalenie klustra
+gcloud dataproc clusters create ${CLUSTER_NAME} \                                                                                                                                                                                                                                    --enable-component-gateway --region ${REGION} \
+  --subnet default --public-ip-address \
+  --single-node --master-machine-type n2-standard-4 --master-boot-disk-size 50 \
+  --image-version 2.2-debian12 --optional-components=ZEPPELIN\                                                                                                                                                                                                                                                                     
+  --project ${PROJECT_ID} --max-age=2h 
+
