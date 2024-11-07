@@ -1,6 +1,6 @@
 import sys
 import time
-import heapq
+
 
 def read_input(filename):
     with open(filename, 'r') as f:
@@ -42,6 +42,7 @@ def evaluate_permutation(sequence, p, r, S):
     return total_flow_time
 
 def find_solution(n, p, r, S, time_limit):
+    time.sleep(time_limit)
     current_time = 0
     previous_task = 0
     sequence = []

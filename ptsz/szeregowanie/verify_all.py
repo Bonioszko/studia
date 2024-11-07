@@ -22,7 +22,7 @@ def run_verification_for_all_files(executable):
                 print(f"Running verification for {input_file}")
                 try:
                     start_time = time.time()
-                    command = ['python', 'weryfikator_czasu.py', executable, input_file, output_file, str(i//10)]
+                    command = ['python', 'verify_time.py', executable, input_file, output_file, str(i//10)]
                     print(f"Executing command: {' '.join(command)}")
                     result = subprocess.run(
                         command,
@@ -32,20 +32,22 @@ def run_verification_for_all_files(executable):
                     end_time = time.time()
                     elapsed_time = end_time - start_time
                     
+                    print(result.stdout)
+                    print(result.stderr)
+                    
                     if result.returncode != 0:
                         print(f"Error running verification for {input_file}. Return code: {result.returncode}")
-                        print(f"Error output: {result.stderr}")
                         value = "Error"
                     else:
                         print(f"Verification completed for {input_file}.")
-                        exec_command = ['python', 'weryfikator.py', input_file, output_file]
+                        exec_command = ['python', 'verify.py', input_file, output_file]
                         exec_result = subprocess.run(
                             exec_command,
                             capture_output=True,
                             text=True
                         )
                         if exec_result.returncode != 0:
-                            print(f"Error running weryfikator.py for {exec_output_file}. Return code: {exec_result.returncode}")
+                            print(f"Error running verify.py for {exec_output_file}. Return code: {exec_result.returncode}")
                             print(f"Error output: {exec_result.stderr}")
                             value = "Error"
                         else:
