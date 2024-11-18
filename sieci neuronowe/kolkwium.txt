@@ -1,0 +1,20 @@
+10 z drzew decyzyjnych 
+5 z knn 
+5 z regresjii
+
+45 min
+przykladowe zadanie 
+
+Pytanie o definicje ktoregos z algorytmu (zamkniete)
+
+wielokrotnego wyboru = zalety algorut,y knn (sa punkty ujemne w obrebie zadania)
+
+
+wszystko co jest w zagadnie iach obowiazuje ()
+
+krotrze otwarte przykladowe - oblyczic entropie itd 
+zadanie otwarte przykladowe - metody radzenia sobei z brakujacymi wartosciami w zbiorze 
+
+jakas karta zabrana 
+   
+nie jest openbook - nie mozna korzystac z materialow 

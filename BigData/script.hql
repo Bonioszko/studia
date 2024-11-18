@@ -1,4 +1,4 @@
--- Create table for league data 
+
 
 CREATE EXTERNAL TABLE IF NOT EXISTS league_data (
     league_id INT,
@@ -6,15 +6,11 @@ CREATE EXTERNAL TABLE IF NOT EXISTS league_data (
     average_wage DOUBLE,
     player_count INT
 )
-COMMENT 'leagues'
+COMMENT 'leagues mapReduce'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '${input_dir1}';  -- Ensure location is specified correctly
-
--- Load data into league_data table
-
--- Create external table for league information
+LOCATION '${input_dir3}';
 
 CREATE EXTERNAL TABLE IF NOT EXISTS league_ext (
     league_id INT,
@@ -25,9 +21,8 @@ COMMENT 'leagues'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '${input_dir2}';  -- Ensure location is specified correctly
+LOCATION '${input_dir4}';
 
--- Create summary table
 CREATE TABLE IF NOT EXISTS leagues_summary (
     league_id INT,
     league_name STRING,
@@ -39,9 +34,8 @@ CREATE TABLE IF NOT EXISTS leagues_summary (
 ROW FORMAT SERDE
 'org.apache.hadoop.hive.serde2.JsonSerDe'
 STORED AS TEXTFILE
-LOCATION '${output_dir}';  
+LOCATION '${output_dir6}';  
 
--- Insert summarized data
 INSERT OVERWRITE TABLE leagues_summary
 SELECT 
     league_id,
@@ -68,5 +62,3 @@ WHERE
     rank <= 3
 ORDER BY 
     league_level, rank;
-
-select * from leagues_summary;

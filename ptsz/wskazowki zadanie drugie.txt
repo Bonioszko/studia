@@ -1,0 +1,46 @@
+4 maszyny 
+
+
+ iles zadan, tak samo jak poprzedenie zadanie 
+
+ praktyczny przyklad to drukarka 
+
+ maszyny sie rozna efektywnoscia
+
+dla kazdego zadania format jest 
+
+czas trwania zadania p1 na maszynie pierwssze itd az do maszyny 4
+
+pierwszzy indkes maaszyna, drugi zadanie 
+
+p11 p21 p31 p41
+p12 p22 p32 p42
+
+kazda maszyna moze wykonywac osobne zadanie
+(nie ma czasow przestrajania i ready time)
+
+
+
+Jedno zadanie moze sie roznic czasem wykonywania w zaleznosci od maszyny
+na dole pokazuje, ze osobno kazda maszyna wykonuje zadanie
+ m1 11111888
+ m2 226666666
+ m3 3333337777777       
+ m4 455555
+
+
+mamy wyznaczony czas, za przekroczenie  naliczamy kare w zaleznosci od tego jak mocno przekroczymy = kara => {0, czas zakonczenia - oczekiwany czas zakocnzenia}
+
+kazde zadanie ma maksymalny czas, laczna kara to suma wszyskich naliczonych kar ktore maja swoje wagi 
+
+
+
+format danych :
+czas_na_maszynie_1 czas_na_maszynie_2 czas_na_maszynie_3 czas_na_maszynie_4 waga_kary maksymalny_czas
+
+plik wejsciowy:
+n
+p11 p21 p31 p41 w1 d1
+p12 p22 p32 p42 w2 d2
+…
+p1n p2n p3n p4n wn dn
