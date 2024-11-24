@@ -17,11 +17,11 @@ def generate_data(pmin, pmax, n):
 def main(n):
     data = generate_data(1,100,n)
     
-    filename = f'in_151892_{n}.csv'
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([n])
-        writer.writerows(data)
+    filename = f'in_151892_{n}.txt'
+    with open(filename, mode='w') as file:
+        file.write(f"{n}\n")
+        for row in data:
+            file.write(" ".join(map(str, row)) + "\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate printing orders data.')

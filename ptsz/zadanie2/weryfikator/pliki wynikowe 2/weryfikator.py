@@ -6,12 +6,13 @@ def read_output_file(filename):
         lines = file.readlines()
     
     criterion_value = int(lines[0].strip())
-    sequences = [line.strip().split(',') for line in lines[1:5]]
+    sequences = [line.strip().split() for line in lines[1:5]]
     return criterion_value, sequences
 
 def verify_sequences(sequences, n):
     task_set = set()
     for seq in sequences:
+        
         for task in seq:
             if task in task_set:
                 return False
@@ -20,9 +21,9 @@ def verify_sequences(sequences, n):
 
 def calculate_criterium(sequences, task_durations, deadlines, penalties):
     total_penalty = 0
-    for machine_seq in sequences:
+    for task_index, machine_seq in enumerate(sequences):
         current_time = 0
-        for task_index ,task in enumerate( machine_seq):
+        for task in machine_seq:
             task = int(task) -1
             duration = task_durations[task][task_index]
             deadline = deadlines[task_index]
@@ -36,15 +37,19 @@ def calculate_criterium(sequences, task_durations, deadlines, penalties):
 
 def read_input_file(input_filename):
     with open(input_filename, mode='r') as file:
-        reader = csv.reader(file)
-        n = int(next(reader)[0])  
-        task_durations = []
-        deadlines = []
-        penalties = []
-        for row in reader:
-            task_durations.append([int(row[0]), int(row[1]), int(row[2]), int(row[3])])
-            penalties.append(int(row[4]))
-            deadlines.append(int(row[5]))
+        lines = file.readlines()
+    
+    n = int(lines[0].strip())
+    task_durations = []
+    deadlines = []
+    penalties = []
+    
+    for line in lines[1:]:
+        parts = list(map(int, line.strip().split()))
+        task_durations.append(parts[:4])
+        penalties.append(parts[4])
+        deadlines.append(parts[5])
+    
     return task_durations, deadlines, penalties
 
 def main(input_filename, output_filename):
